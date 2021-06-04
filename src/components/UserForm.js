@@ -12,13 +12,13 @@ class UserForm extends React.Component {
       validators.reduce((error, validator) => error || validator(value), undefined);
 
   onSubmit = (values) => {
-    console.log(values);
     this.props.onSubmit(values);
   };
 
   render() {
     return (
       <Form
+        initialValues={this.props.initialValues}
         onSubmit={this.onSubmit}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>

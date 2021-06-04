@@ -36,6 +36,7 @@ export const editUser = userEdit => async dispatch => {
             type: EDIT_USER,
             payload: response
         })
+        history.push('/')
     } catch(error) {
         console.log(error);
     }

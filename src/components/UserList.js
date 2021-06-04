@@ -17,7 +17,9 @@ class UserList extends React.Component {
             <td>{first_name}</td>
             <td>{last_name}</td>
             <td>{email}</td>
-            <td></td>
+            <td>
+                <Link to={`/users/edit/${id}`} className="btn btn-success">Edit</Link>
+            </td>
         </tr>)
     }
 
