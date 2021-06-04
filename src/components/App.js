@@ -8,7 +8,7 @@ import UserList from './UserList';
 
 const App = () => {
     return (
-        <div className="container">
+        <div className="container mt-5">
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact component={UserList} />
