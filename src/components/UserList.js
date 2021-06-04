@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchUsers } from './../actions'
+import { fetchUsers, deleteUser } from './../actions'
 
 class UserList extends React.Component {
 
@@ -12,13 +12,14 @@ class UserList extends React.Component {
     }
 
     renderUsers()  {
-        return this.props.users.map(({id, first_name, last_name, email}) => 
-        <tr key={id}>
-            <td>{first_name}</td>
-            <td>{last_name}</td>
-            <td>{email}</td>
+        return this.props.users.map((user) => 
+        <tr key={user.id}>
+            <td>{user.first_name}</td>
+            <td>{user.last_name}</td>
+            <td>{user.email}</td>
             <td>
-                <Link to={`/users/edit/${id}`} className="btn btn-success">Edit</Link>
+                <Link to={`/users/edit/${user.id}`} className="btn btn-success">Edit</Link>
+                <button className="btn btn-danger ms-1" onClick={() => this.props.deleteUser(user)}>Delete</button>
             </td>
         </tr>)
     }
@@ -62,5 +63,6 @@ const mapStateToProps = ( state ) => {
 }
 
 export default connect(mapStateToProps, {
-    fetchUsers
+    fetchUsers,
+    deleteUser
 })(UserList);
