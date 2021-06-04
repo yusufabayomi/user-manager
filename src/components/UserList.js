@@ -6,7 +6,9 @@ import { fetchUsers } from './../actions'
 class UserList extends React.Component {
 
     componentDidMount() {
-        this.props.fetchUsers()
+        if(this.props.firstfetch) {
+            this.props.fetchUsers()
+        }
     }
 
     renderUsers()  {
@@ -20,7 +22,6 @@ class UserList extends React.Component {
     }
 
     render() {
-        console.log(this.props.users);
         return (
             <>
                 <div className="d-flex justify-content-between mb-3">
@@ -53,7 +54,8 @@ class UserList extends React.Component {
 
 const mapStateToProps = ( state ) => {
     return {
-        users: state.users
+        users: state.users,
+        firstfetch: state.fetchFirstTime
     };
 }
 

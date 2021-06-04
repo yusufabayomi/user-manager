@@ -1,4 +1,5 @@
 import { addUserApi, deleteUserApi, loadUsersApi, updateUserApi } from "../helper/api";
+import history from "../helper/history";
 import { CREATE_USER, DELETE_USER, EDIT_USER, FETCH_USERS } from "./types";
 
 export const fetchUsers = () => async dispatch => {
@@ -21,7 +22,8 @@ export const createUser = userCreate => async dispatch => {
         dispatch({ 
             type: CREATE_USER, 
             payload: response
-        }); 
+        });
+        history.push("/")
     } catch(error) {
         console.log(error);
     }
